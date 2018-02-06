@@ -36,7 +36,7 @@ namespace Object_oriented_programming
 
 		static void WriteToFile(string FileName, MyList<Films> FilmsList)
 		{
-			FileStream F = new FileStream(FileName, FileMode.Open);
+			FileStream F = new FileStream(FileName, FileMode.OpenOrCreate);
 			StreamWriter W = new StreamWriter(F);
 			W.WriteLine("Список фильмов содержит: " + FilmsList.Length + " элементов");
 			W.WriteLine("----------------------------------------------------------");
