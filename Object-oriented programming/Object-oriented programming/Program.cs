@@ -28,8 +28,10 @@ namespace Object_oriented_programming
 				string[] buf = R.ReadLine().Split(new char[] { '#' });
 				if (buf[0] == "1")
 					FilmsList.Add(new Games(buf[1], buf[2]));
-				else
+				else if (buf[0] == "2")
 					FilmsList.Add(new Cartoon(buf[1], Convert.ToInt32(buf[2])));
+				else
+					FilmsList.Add(new Documentary(buf[1], Convert.ToInt32(buf[2])));
 			}
 			R.Close(); F.Close();
 		}
