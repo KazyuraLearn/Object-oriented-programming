@@ -5,58 +5,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	public class MyList<T> : IEnumerable<T>
 	{
-		Node<T> Head;
-		Node<T> Tail;
-		int Count;
+		Node<T> head;
+		Node<T> tail;
+		int count;
 
-		public int Length { get { return Count; } }
+		public Node<T> Head { get { return head; } }
+		public int Count { get { return count; } }
 		
 		public void Add(T data)
 		{
 			Node<T> node = new Node<T>(data);
-			if (Head == null)
-				Head = node;
+			if (head == null)
+				head = node;
 			else
-				Tail.Next = node;
-			Tail = node;
+				tail.next = node;
+			tail = node;
 
-			Count++;
+			count++;
 		}
 
 		public bool Remove(T data)
 		{
-			Node<T> Current = Head;
-			Node<T> Previous = null;
+			Node<T> current = head;
+			Node<T> previous = null;
 
-			while (Current != null)
+			while (current != null)
 			{
-				if (Current.Data.Equals(data))
+				if (current.data.Equals(data))
 				{
-					if (Previous != null)
+					if (previous != null)
 					{
-						Previous.Next = Current.Next;
-						if (Current.Next == null)
-							Tail = Previous;
+						previous.next = current.next;
+						if (current.next == null)
+							tail = previous;
 					}
 					else
 					{
-						Head = Head.Next;
-						if (Head == null)
-							Tail = null;
+						head = head.next;
+						if (head == null)
+							tail = null;
 					}
-					Count--;
+					count--;
 					return true;
 				}
 
-				Previous = Current;
-				Current = Current.Next;
+				previous = current;
+				current = current.next;
 			}
 			return false;
 		}		
+
+		public void Swap(Node<T> one, Node<T> two)
+		{
+			T temp = one.data;
+			one.data = two.data;
+			two.data = temp;
+		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
@@ -65,11 +73,11 @@ namespace Object_oriented_programming
 
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			Node<T> Current = Head;
-			while (Current != null)
+			Node<T> current = head;
+			while (current != null)
 			{
-				yield return Current.Data;
-				Current = Current.Next;
+				yield return current.data;
+				current = current.next;
 			}
 		}
 	}

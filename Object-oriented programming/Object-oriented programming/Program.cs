@@ -5,44 +5,64 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			MyList<Films> FilmsList = new MyList<Films>();
-			ReadToFile(args[0], FilmsList);
-			WriteToFile(args[1], FilmsList);
-			System.Diagnostics.Process P = new System.Diagnostics.Process();
-			P.StartInfo.FileName = args[1];
-			P.Start();
+			MyList<Films> filmsList = new MyList<Films>();
+			ReadToFile(args[0], filmsList);
+			WriteToFile(args[1], filmsList);
+			System.Diagnostics.Process process = new System.Diagnostics.Process();
+			process.StartInfo.FileName = args[1];
+			process.Start();
 		}
 
-		static void ReadToFile(string FileName, MyList<Films> FilmsList)
+		static void ReadToFile(string fileName, MyList<Films> filmsList)
 		{
-			FileStream F = new FileStream(FileName, FileMode.OpenOrCreate);
-			StreamReader R = new StreamReader(F, Encoding.GetEncoding(1251));
-			while (R.Peek() > -1)
+			FileStream file = new FileStream(fileName, FileMode.OpenOrCreate);
+			StreamReader reader = new StreamReader(file, Encoding.GetEncoding(1251));
+			while (reader.Peek() > -1)
 			{
-				string[] buf = R.ReadLine().Split(new char[] { '#' });
+				string[] buf = reader.ReadLine().Split(new char[] { '#' });
 				if (buf[0] == "1")
-					FilmsList.Add(new Games(buf[1], buf[2]));
+					filmsList.Add(new Games(buf[1], buf[2]));
 				else
-					FilmsList.Add(new Cartoon(buf[1], Convert.ToInt32(buf[2])));
+					filmsList.Add(new Cartoon(buf[1], Convert.ToInt32(buf[2])));
 			}
-			R.Close(); F.Close();
+			reader.Close(); file.Close();
 		}
 
-		static void WriteToFile(string FileName, MyList<Films> FilmsList)
+		static void WriteToFile(string fileName, MyList<Films> filmsList)
 		{
-			FileStream F = new FileStream(FileName, FileMode.OpenOrCreate);
-			StreamWriter W = new StreamWriter(F);
-			W.WriteLine("Список фильмов содержит: " + FilmsList.Length + " элементов");
-			W.WriteLine("----------------------------------------------------------");
-			foreach (var el in FilmsList)
-				W.WriteLine(el.ToString());
-			W.Close(); F.Close();
+			FileStream file = new FileStream(fileName, FileMode.OpenOrCreate);
+			StreamWriter writer = new StreamWriter(file);
+			Sort(filmsList);
+			writer.WriteLine("Список фильмов содержит: " + filmsList.Count + " элементов");
+			writer.WriteLine("----------------------------------------------------------");
+			foreach (var el in filmsList)
+				writer.WriteLine(el.ToString());
+			writer.Close(); file.Close();
+		}
+
+		static void Sort(MyList<Films> filmsList)
+		{
+			bool flag = true;
+			while(flag)
+			{
+				flag = false;
+				Node<Films> current = filmsList.Head;
+				while (current.next != null)
+				{
+					if (current.data > current.next.data)
+					{
+						filmsList.Swap(current, current.next);
+						flag = true;
+					}
+					current = current.next;
+				}
+			}
 		}
 	}
 }

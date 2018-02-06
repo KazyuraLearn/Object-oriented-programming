@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	public class Node<T>
 	{
-		public T Data;
-		public Node<T> Next;
+		public T data;
+		public Node<T> next;
 
-		public Node(T Data)
+		public Node(T data)
 		{
-			this.Data = Data;
+			this.data = data;
 		}		
 	}
 }
