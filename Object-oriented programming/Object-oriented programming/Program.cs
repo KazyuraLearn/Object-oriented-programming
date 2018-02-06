@@ -28,17 +28,15 @@ namespace Object_oriented_programming
 				string[] buf = R.ReadLine().Split(new char[] { '#' });
 				if (buf[0] == "1")
 					FilmsList.Add(new Games(buf[1], buf[2]));
-				else if (buf[0] == "2")
-					FilmsList.Add(new Cartoon(buf[1], Convert.ToInt32(buf[2])));
 				else
-					FilmsList.Add(new Documentary(buf[1], Convert.ToInt32(buf[2])));
+					FilmsList.Add(new Cartoon(buf[1], Convert.ToInt32(buf[2])));
 			}
 			R.Close(); F.Close();
 		}
 
 		static void WriteToFile(string FileName, MyList<Films> FilmsList)
 		{
-			FileStream F = new FileStream(FileName, FileMode.Open);
+			FileStream F = new FileStream(FileName, FileMode.OpenOrCreate);
 			StreamWriter W = new StreamWriter(F);
 			W.WriteLine("Список фильмов содержит: " + FilmsList.Length + " элементов");
 			W.WriteLine("----------------------------------------------------------");
