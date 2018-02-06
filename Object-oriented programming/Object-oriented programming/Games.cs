@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	class Games : Films
 	{
-		string Director;
+		string director;
 
-		public Games(string Name, string Director)
-			: base(Name)
+		public Games(string name, string director)
+			: base(name)
 		{
-			this.Director = Director;
+			this.director = director;
 		}
 
 		public override string ToString()
 		{
-			return "Название игрового фильма: " + Name + ". Режисёр: " + Director;
+			return "Название игрового фильма: " + name + ". Режисёр: " + director;
 		}
 	}
 }

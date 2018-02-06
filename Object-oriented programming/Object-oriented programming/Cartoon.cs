@@ -4,24 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	class Cartoon : Films
 	{
-		enum Type { Рисованный, Кукольный, Пластилиновый };
-		Type Ob;
+		enum Type { рисованный, кукольный, пластилиновый };
+		Type ob;
 
-		public Cartoon(string Name, int T)
-			: base(Name)
+		public Cartoon(string name, int type)
+			: base(name)
 		{
-			if (T == 0) Ob = Type.Кукольный;
-			if (T == 1) Ob = Type.Пластилиновый;
-			if (T == 2) Ob = Type.Рисованный;
+			if (type == 0) ob = Type.кукольный;
+			if (type == 1) ob = Type.пластилиновый;
+			if (type == 2) ob = Type.рисованный;
 		}
 
 		public override string ToString()
 		{
-			return "Название мультфильма: " + Name + ". Тип: " + Ob;
+			return "Название мультфильма: " + name + ". Тип: " + ob;
 		}
 	}
 }
