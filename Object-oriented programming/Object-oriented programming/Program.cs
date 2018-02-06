@@ -21,7 +21,7 @@ namespace Object_oriented_programming
 
 		static void ReadToFile(string FileName, MyList<Films> FilmsList)
 		{
-			FileStream F = new FileStream(FileName, FileMode.Open);
+			FileStream F = new FileStream(FileName, FileMode.OpenOrCreate);
 			StreamReader R = new StreamReader(F, Encoding.GetEncoding(1251));
 			while (R.Peek() > -1)
 			{
