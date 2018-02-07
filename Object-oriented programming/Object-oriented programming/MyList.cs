@@ -15,7 +15,7 @@ namespace ObjectOrientedProgramming
 
 		public Node<T> Head { get { return head; } }
 		public int Count { get { return count; } }
-
+		
 		public void Add(T data)
 		{
 			Node<T> node = new Node<T>(data);
@@ -57,6 +57,13 @@ namespace ObjectOrientedProgramming
 				current = current.next;
 			}
 			return false;
+		}		
+
+		public void Swap(Node<T> one, Node<T> two)
+		{
+			T temp = one.data;
+			one.data = two.data;
+			two.data = temp;
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

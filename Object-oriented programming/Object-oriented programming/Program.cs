@@ -40,11 +40,31 @@ namespace ObjectOrientedProgramming
 		{
 			FileStream file = new FileStream(fileName, FileMode.OpenOrCreate);
 			StreamWriter writer = new StreamWriter(file);
+			Sort(filmsList);
 			writer.WriteLine("Список фильмов содержит: " + filmsList.Count + " элементов");
 			writer.WriteLine("----------------------------------------------------------");
 			foreach (var el in filmsList)
 				writer.WriteLine(el.ToString());
 			writer.Close(); file.Close();
+		}
+
+		static void Sort(MyList<Films> filmsList)
+		{
+			bool flag = true;
+			while(flag)
+			{
+				flag = false;
+				Node<Films> current = filmsList.Head;
+				while (current.next != null)
+				{
+					if (current.data > current.next.data)
+					{
+						filmsList.Swap(current, current.next);
+						flag = true;
+					}
+					current = current.next;
+				}
+			}
 		}
 	}
 }
