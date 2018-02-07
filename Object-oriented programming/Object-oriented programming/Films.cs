@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Object_oriented_programming
+namespace ObjectOrientedProgramming
 {
 	abstract class Films
 	{
-		protected string Name;
+		protected string name;
 
-		public Films(string Name)
+		public Films(string name)
 		{
-			this.Name = Name;
+			this.name = name;
 		}
 
 		public override string ToString()
 		{
-			return "Название фильма: " + Name;
+			return "Название фильма: " + name;
 		}
 	}
 }
