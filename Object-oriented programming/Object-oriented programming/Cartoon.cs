@@ -11,8 +11,8 @@ namespace ObjectOrientedProgramming
 		enum Type { рисованный, кукольный, пластилиновый };
 		Type ob;
 
-		public Cartoon(string name, int type)
-			: base(name)
+		public Cartoon(string name, string country, int type)
+			: base(name, country)
 		{
 			if (type == 0) ob = Type.кукольный;
 			if (type == 1) ob = Type.пластилиновый;
@@ -21,7 +21,7 @@ namespace ObjectOrientedProgramming
 
 		public override string ToString()
 		{
-			return "Название мультфильма: " + name + ". Тип: " + ob;
+			return "Название мультфильма: " + name + ". Страна: " + country + ". Тип: " + ob;
 		}
 	}
 }
