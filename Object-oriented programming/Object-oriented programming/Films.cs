@@ -15,6 +15,19 @@ namespace ObjectOrientedProgramming
 			this.name = name;
 		}
 
+		public int VowelCount
+		{
+			get
+			{
+				int result = 0;
+				string vowel = "AЕЁИОУЫЭЮЯаеёиоуыэюяAEIOUYaeiouy";
+				foreach (var el in name)
+					if (vowel.IndexOf(el) != -1)
+						result++;
+				return result;
+			}
+		}
+
 		public override string ToString()
 		{
 			return "Название фильма: " + name;
