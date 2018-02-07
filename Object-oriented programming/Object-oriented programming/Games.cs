@@ -10,15 +10,15 @@ namespace ObjectOrientedProgramming
 	{
 		string director;
 
-		public Games(string name, string director)
-			: base(name)
+		public Games(string name, string country, string director)
+			: base(name, country)
 		{
 			this.director = director;
 		}
 
 		public override string ToString()
 		{
-			return "Название игрового фильма: " + name + ". Режисёр: " + director;
+			return "Название игрового фильма: " + name + ". Страна: " + country + ". Режисёр: " + director;
 		}
 	}
 }

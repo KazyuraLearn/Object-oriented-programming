@@ -10,15 +10,15 @@ namespace ObjectOrientedProgramming
 	{
 		int yearRelease;
 
-		public Documentary(string name, int yearRelease)
-			: base(name)
+		public Documentary(string name, string country, int yearRelease)
+			: base(name, country)
 		{
 			this.yearRelease = yearRelease;
 		}
 
 		public override string ToString()
 		{
-			return "Название документального фильма: " + name + ". Год выпуска: " + yearRelease;
+			return "Название документального фильма: " + name + ". Страна: " + country + ". Год выпуска: " + yearRelease;
 		}
 	}
 }
