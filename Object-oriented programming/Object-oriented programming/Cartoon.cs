@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	class Cartoon : Films
+	public class Cartoon : Films
 	{
 		enum Type { рисованный, кукольный, пластилиновый };
 		Type ob;
@@ -21,7 +21,7 @@ namespace ObjectOrientedProgramming
 
 		public override string ToString()
 		{
-			return "Название мультфильма: " + name + ". Страна: " + country + ". Тип: " + ob;
+			return base.ToString() + ". Тип: " + ob;
 		}
 	}
 }

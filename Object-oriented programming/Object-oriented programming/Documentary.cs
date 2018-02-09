@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	class Documentary : Films
+	public class Documentary : Films
 	{
 		int yearRelease;
 
@@ -18,7 +18,7 @@ namespace ObjectOrientedProgramming
 
 		public override string ToString()
 		{
-			return "Название документального фильма: " + name + ". Страна: " + country + ". Год выпуска: " + yearRelease;
+			return base.ToString() + ". Год выпуска: " + yearRelease;
 		}
 	}
 }

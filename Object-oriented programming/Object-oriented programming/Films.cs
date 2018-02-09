@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	abstract class Films
+	public abstract class Films : IComparable<Films>
 	{
 		protected string name;
 		protected string country;
@@ -30,36 +30,16 @@ namespace ObjectOrientedProgramming
 			}
 		}
 
-		static int Compare(Films one, Films two)
+		public int CompareTo(Films ob)
 		{
-			if (one.VowelCount == two.VowelCount)
+			if (this.VowelCount == ob.VowelCount)
 				return 0;
-			return (one.VowelCount > two.VowelCount) ? 1 : -1;
-		}
-
-		public static bool operator ==(Films one, Films two)
-		{
-			return (Compare(one, two) == 0) ? true : false;
-		}
-
-		public static bool operator !=(Films one, Films two)
-		{
-			return (Compare(one, two) == 0) ? false : true;
-		}
-
-		public static bool operator >(Films one, Films two)
-		{
-			return (Compare(one, two) == 1) ? true : false;
-		}
-
-		public static bool operator <(Films one, Films two)
-		{
-			return (Compare(one, two) == 1) ? false : true;
+			return (this.VowelCount > ob.VowelCount) ? 1 : -1;
 		}
 
 		public override string ToString()
 		{
-			return "Название фильма: " + name + ". Страна: " + country;
+			return "Название фильма: " + name + ". Страна: " + country + ". Жанр: " + this.GetType().Name;
 		}
 	}
 }

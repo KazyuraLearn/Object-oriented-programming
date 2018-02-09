@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	class Games : Films
+	public class Games : Films
 	{
 		string director;
 
@@ -18,7 +18,7 @@ namespace ObjectOrientedProgramming
 
 		public override string ToString()
 		{
-			return "Название игрового фильма: " + name + ". Страна: " + country + ". Режисёр: " + director;
+			return base.ToString() + ". Режисёр: " + director;
 		}
 	}
 }
