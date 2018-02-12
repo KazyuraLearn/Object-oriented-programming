@@ -69,6 +69,8 @@ namespace ObjectOrientedProgramming
 
 		public void Sort()
 		{
+			if (Count == 0)
+				return;
 			bool flag = true;
 			while (flag)
 			{
@@ -117,6 +119,27 @@ namespace ObjectOrientedProgramming
 				current = current.next;
 			}
 			writer.Close(); file.Close();
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+				return false;
+			MyList<T> two = obj as MyList<T>;
+			if (two == null)
+				return false;
+			if (Count != two.Count)
+				return false;
+			Node<T> currentOne = head;
+			Node<T> currentTwo = two.head;
+			while (currentOne != null)
+			{
+				if (currentOne.data.CompareTo(currentTwo.data) != 0)
+					return false;
+				currentOne = currentOne.next;
+				currentTwo = currentTwo.next;
+			}
+			return true;
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

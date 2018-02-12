@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	public abstract class Films : IComparable<Films>
+	public class Films : IComparable<Films>
 	{
 		protected string name;
 		protected string country;
