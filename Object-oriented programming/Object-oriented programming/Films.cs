@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	abstract class Films
+	public abstract class Films
 	{
 		protected string name;
 
