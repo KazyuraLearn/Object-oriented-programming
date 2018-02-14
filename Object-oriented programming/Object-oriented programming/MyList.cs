@@ -100,7 +100,7 @@ namespace ObjectOrientedProgramming
 					while (reader.Peek() > -1)
 					{
 						string[] buf = reader.ReadLine().Split(new char[] { '#' });
-						if (buf.Length != 3)
+						if (buf.Length != 4)
 							continue;
 						if (buf[0] == "1")
 							filmsList.Add(new Games(buf[1], buf[2], buf[3]));
