@@ -13,7 +13,7 @@ namespace ObjectOrientedProgramming
 		{
 			MyList<Films> filmsList = new MyList<Films>();
 			filmsList =	filmsList.ReadToFile(args[0]);
-			filmsList.WriteToFile<Games>(args[1]);
+			Multimethod.MultiWriteToFile(args[1], filmsList);
 
 			if (File.Exists(args[1]))
 			{
