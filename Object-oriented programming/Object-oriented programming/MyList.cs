@@ -91,7 +91,7 @@ namespace ObjectOrientedProgramming
 		public MyList<Films> ReadToFile(string fileName)
 		{
 			MyList<Films> filmsList = new MyList<Films>();
-			FileStream file = new FileStream(fileName, FileMode.OpenOrCreate);
+			FileStream file = new FileStream(fileName, FileMode.Open);
 			StreamReader reader = new StreamReader(file, Encoding.GetEncoding(1251));
 			while (reader.Peek() > -1)
 			{

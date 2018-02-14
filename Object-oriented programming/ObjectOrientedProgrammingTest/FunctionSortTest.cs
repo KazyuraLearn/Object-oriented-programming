@@ -8,7 +8,7 @@ namespace ObjectOrientedProgrammingTest
 	public class FunctionSortTest
 	{
 		[TestMethod]
-		public void SortTest_EmptyList()
+		public void EmptyList()
 		{
 			MyList<Films> filmsList = new MyList<Films>();
 			MyList<Films> expected = new MyList<Films>();
@@ -19,7 +19,7 @@ namespace ObjectOrientedProgrammingTest
 		}
 
 		[TestMethod]
-		public void SortTest_NotEmptyList()
+		public void NotEmptyList()
 		{
 			MyList<Films> filmsList = new MyList<Films>()
 			{ 
@@ -44,7 +44,7 @@ namespace ObjectOrientedProgrammingTest
 		}
 
 		[TestMethod]
-		public void SortTest_OnlyVowelList()
+		public void OnlyVowelList()
 		{
 			MyList<Films> filmsList = new MyList<Films>()
 			{ 

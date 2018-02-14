@@ -53,12 +53,28 @@
     <Compile Include="FunctionSortTest.cs" />
     <Compile Include="FunctionVowelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FunctionReadToFileTest.cs" />
+    <Compile Include="FunctionWriteToFileTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Object-oriented programming\Object-oriented programming.csproj">
       <Project>{44697272-b829-4484-b222-ef060b00c773}</Project>
       <Name>Object-oriented programming</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CorrectFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmptyFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExpectedWriteTest.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IncorrectFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
