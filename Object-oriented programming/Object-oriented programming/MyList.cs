@@ -69,6 +69,8 @@ namespace ObjectOrientedProgramming
 
 		public void Sort()
 		{
+			if (Count == 0)
+				return;
 			bool flag = true;
 			while (flag)
 			{
@@ -89,34 +91,56 @@ namespace ObjectOrientedProgramming
 		public MyList<Films> ReadToFile(string fileName)
 		{
 			MyList<Films> filmsList = new MyList<Films>();
-			FileStream file = new FileStream(fileName, FileMode.OpenOrCreate);
-			StreamReader reader = new StreamReader(file, Encoding.GetEncoding(1251));
-			while (reader.Peek() > -1)
+			if (!File.Exists(fileName))
+				return filmsList;
+			try
 			{
-				string[] buf = reader.ReadLine().Split(new char[] { '#' });
-				if (buf[0] == "1")
-					filmsList.Add(new Games(buf[1], buf[2], buf[3]));
-				else if (buf[0] == "2")
-					filmsList.Add(new Cartoon(buf[1], buf[2], Convert.ToInt32(buf[3])));
-				else if (buf[0] == "3")
-					filmsList.Add(new Documentary(buf[1], buf[2], Convert.ToInt32(buf[3])));
+				using (StreamReader reader = new StreamReader(fileName, Encoding.GetEncoding(1251)))
+				{
+					while (reader.Peek() > -1)
+					{
+						string[] buf = reader.ReadLine().Split(new char[] { '#' });
+						if (buf[0] == "1")
+							filmsList.Add(new Games(buf[1], buf[2], buf[3]));
+						else if (buf[0] == "2")
+							filmsList.Add(new Cartoon(buf[1], buf[2], Convert.ToInt32(buf[3])));
+						else if (buf[0] == "3")
+							filmsList.Add(new Documentary(buf[1], buf[2], Convert.ToInt32(buf[3])));
+					}
+				}
+				return filmsList;
 			}
-			reader.Close(); file.Close();
-			return filmsList;
+			catch
+			{
+				return new MyList<Films>();
+			}
 		}
 
-		public void WriteToFile<type>(string fileName)
+		public int WriteToFile<type>(string fileName)
 		{
-			FileStream file = new FileStream(fileName, FileMode.Create);
-			StreamWriter writer = new StreamWriter(file);
-			Node<T> current = head;
-			while (current != null)
+			try
 			{
-				if (current.data is type)
-					writer.WriteLine(current.data.ToString());
-				current = current.next;
+				if (File.Exists(fileName))
+					File.Delete(fileName);
+				using (FileStream file = File.Create(fileName))
+				{
+					using (StreamWriter writer = new StreamWriter(file))
+					{
+						Node<T> current = head;
+						while (current != null)
+						{
+							if (current.data is type)
+								writer.WriteLine(current.data.ToString());
+							current = current.next;
+						}
+					}
+				}
+				return 0;
 			}
-			writer.Close(); file.Close();
+			catch
+			{
+				return -1;
+			}
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
