@@ -22,7 +22,7 @@ namespace ObjectOrientedProgramming
 			get
 			{
 				int result = 0;
-				string vowel = "ЕЁИОУЫЭЮЯаеёиоуыэюяEIOUYaeiouyА";
+				string vowel = "АЕЁИОУЫЭЮЯаеёиоуыэюяAEIOUYaeiouy";
 				foreach (var el in name)
 				{
 					int x = vowel.IndexOf(el);

@@ -59,5 +59,19 @@ namespace ObjectOrientedProgrammingTest
 
 			Assert.AreEqual(expected, filmsList);
 		}
+
+		[TestMethod]
+		public void CorrectFileOneNode()
+		{
+			MyList<Films> filmsList = new MyList<Films>();
+			MyList<Films> expected = new MyList<Films>()
+			{
+				new Cartoon("Побег из курятника", "Франция", 2),
+			};
+
+			filmsList = filmsList.ReadToFile("CorrectFileOneNode.txt");
+
+			Assert.AreEqual(expected, filmsList);
+		}
 	}
 }
