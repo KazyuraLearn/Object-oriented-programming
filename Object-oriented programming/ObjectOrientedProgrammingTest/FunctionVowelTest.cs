@@ -46,8 +46,8 @@ namespace ObjectOrientedProgrammingTest
 		[TestMethod]
 		public void ThirtyTwoVowel()
 		{
-			string arg = "AЕЁИОУЫЭЮЯаеёиоуыэюяAEIOUYaeiouy";
-			int expected = 32;
+			string arg = "АЕЁИОУЫЭЮЯаеёиоуыэюяAEIOUYaeiouy";
+			int expected = 31;
 
 			Films film = new Films(arg, arg);
 			int actual = film.VowelCount;
