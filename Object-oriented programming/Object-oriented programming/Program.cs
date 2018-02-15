@@ -13,7 +13,7 @@ namespace ObjectOrientedProgramming
 		{
 			MyList<Films> filmsList = new MyList<Films>();
 			ReadToFile(args[0], filmsList);
-			WriteToFile(args[1], filmsList);
+			MultiWriteToFile(args[1], filmsList);
 			System.Diagnostics.Process process = new System.Diagnostics.Process();
 			process.StartInfo.FileName = args[1];
 			process.Start();
@@ -43,6 +43,37 @@ namespace ObjectOrientedProgramming
 			foreach (var el in filmsList)
 				writer.WriteLine(el.ToString());
 			writer.Close(); file.Close();
+		}
+
+		public static int MultiWriteToFile(string fileName, MyList<Films> filmsList)
+		{
+			try
+			{
+				if (File.Exists(fileName))
+					File.Delete(fileName);
+				using (FileStream file = File.Create(fileName))
+				{
+					using (StreamWriter writer = new StreamWriter(file))
+					{
+						Node<Films> currentOne = filmsList.Head;
+						while (currentOne != null)
+						{
+							Node<Films> currentTwo = currentOne.next;
+							while (currentTwo != null)
+							{
+								writer.WriteLine(currentOne.data.Information(currentTwo.data) + "\n");
+								currentTwo = currentTwo.next;
+							}
+							currentOne = currentOne.next;
+						}
+					}
+				}
+				return 0;
+			}
+			catch
+			{
+				return -1;
+			}
 		}
 	}
 }

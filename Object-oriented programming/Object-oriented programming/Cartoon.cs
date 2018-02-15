@@ -19,6 +19,24 @@ namespace ObjectOrientedProgramming
 			if (type == 2) ob = Type.рисованный;
 		}
 
+		public override string Information(Films obj)
+		{
+			if (obj is Games)
+				return InformationChildren(obj as Games);
+			else
+				return InformationChildren(obj as Cartoon);
+		}
+
+		private string InformationChildren(Cartoon obj)
+		{
+			return this.ToString() + "\n" + obj.ToString();
+		}
+
+		private string InformationChildren(Games obj)
+		{
+			return this.ToString() + "\n" + obj.ToString();
+		}
+
 		public override string ToString()
 		{
 			return "Название мультфильма: " + name + ". Тип: " + ob;

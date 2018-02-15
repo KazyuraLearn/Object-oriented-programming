@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgramming
 {
-	abstract class Films
+	public abstract class Films
 	{
 		protected string name;
 
 		public Films(string name)
 		{
 			this.name = name;
+		}
+
+		public virtual string Information(Films obj)
+		{
+			return this.ToString() + "\n" + obj.ToString();
 		}
 
 		public override string ToString()
